@@ -55,6 +55,11 @@
      <Compile Include="Assets\Scripts\HitController.cs" />
      <Compile Include="Assets\Scripts\MotionControls.cs" />
      <Compile Include="Assets\Scripts\StateManager.cs" />
+     <Compile Include="Assets\Scripts\UI\title\component_events\ButtonExit.cs" />
+     <Compile Include="Assets\Scripts\UI\title\component_events\ButtonMultiplayer.cs" />
+     <Compile Include="Assets\Scripts\UI\title\component_events\ButtonSettings.cs" />
+     <Compile Include="Assets\Scripts\UI\title\component_events\ButtonSingleplayer.cs" />
+     <Compile Include="Assets\Scripts\UI\TransitionEffects\TransitionEffects.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
