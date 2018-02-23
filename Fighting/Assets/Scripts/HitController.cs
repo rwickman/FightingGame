@@ -6,6 +6,7 @@ public class HitController : MonoBehaviour {
 
 	public string fighterTag = "Fighter";
 	public float lightKickForce = 10f;
+	public float lightPunchForce = 10f;
 
 	private Fighter player;
 
