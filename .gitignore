@@ -9,5 +9,12 @@ Fighting/Library/expandedItems
 Fighting/Library/LastSceneManagerSetup.txt
 Fighting/Library/shader*
 Fighting/Library/Shader*
+Fighting/**/*.meta
 Fighting/Temp/
+Fighting/**/*cs.meta
 Fighting/obj/
+Fighting/Library/CrashedAssetImports.txt
+Fighting/Library/EditorUserSettings.asset
+Fighting/Library/EditorUserBuildSettings.asset
+Fighting/Library/InspectorExpandedItems.asset
+Fighting/Library/LibraryFormatVersion.txt
