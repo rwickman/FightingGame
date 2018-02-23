@@ -1,4 +1,14 @@
 Fighting/.vscode/*
-Fighting/Library/
+Fighting/Library/metadata
+Fighting/Library/ScriptAssemblies
+Fighting/Library/assetDatabase*
+Fighting/Library/AssetImportState
+Fighting/Library/*.dwlt
+Fighting/Library/EditorInstance.json
+Fighting/Library/expandedItems
+Fighting/Library/LastSceneManagerSetup.txt
+Fighting/Library/shader*
+Fighting/Library/Shader*
+Fighting
 Fighting/Temp/
 Fighting/obj/
