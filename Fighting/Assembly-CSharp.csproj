@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\UI\title\component_events\ButtonSettings.cs" />
      <Compile Include="Assets\Scripts\UI\title\component_events\ButtonSingleplayer.cs" />
      <Compile Include="Assets\Scripts\UI\TransitionEffects\TransitionEffects.cs" />
+     <Compile Include="Assets\Scripts\Utility\AsyncSceneLoad.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
