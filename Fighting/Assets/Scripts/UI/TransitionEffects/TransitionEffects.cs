@@ -11,8 +11,8 @@ public class TransitionEffects : MonoBehaviour {
         pInitColor = panel.color;
     }
 
-    public void Effect(string effect_name) {
-        StartCoroutine(effect_name);
+    public void Effect(string effect_name, float time = 1.0f) {
+        StartCoroutine(effect_name, time);
     }
 
     IEnumerator DoFade(float time = 1.0f) {
