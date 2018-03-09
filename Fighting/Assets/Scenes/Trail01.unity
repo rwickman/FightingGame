@@ -712,18 +712,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertical: 0
   horizontal: 0
-  grounded: 0
+  grounded: 1
   crouch: 0
   punchLight: 0
   punchHeavy: 0
   kickLight: 0
   kickHeavy: 0
-  canAttack: 0
+  canAttack: 1
   isHit: 0
   isAttacking: 0
-  lineLength: 0.5
   reduceOverlapX: 0.05
-  increaseOverlapY: 1
+  increaseOverlapY: -0.1
 --- !u!1 &1740480036
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,15 +18,14 @@ public class StateManager : MonoBehaviour {
 	public bool canAttack = true;
 	public bool isHit;
 	public bool isAttacking;
-	public float lineLength;
 
-	public float reduceOverlapX = 0.05f;
-	public float increaseOverlapY = 1f;
+	public float reduceOverlapX = 0.04f;
+	public float increaseOverlapY = -0.1f;
 
 	private Animator anim;
 	private SpriteRenderer spriteRenderer;
 	private BoxCollider2D boxCollider;
-	private Rigidbody2D rb2D;
+	//private Rigidbody2D rb2D;
 
 	//Box Collider vertices
 	private Vector2 botRightCorner;
@@ -40,14 +39,14 @@ public class StateManager : MonoBehaviour {
 		boxCollider = GetComponent<BoxCollider2D> ();
 		anim = GetComponent<Animator> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		rb2D = GetComponent<Rigidbody2D> ();
+		//rb2D = GetComponent<Rigidbody2D> ();
 
 		layermask = ~((1 << gameObject.layer) | (1 << 12));	 //enables all layer except for this fighter's layer, and walls layer
 
 	}
 
 	void Update(){
-		//checkIfGrounded ();
+		checkIfGrounded ();
 		handleStates (horizontal, vertical);
 	}
 
@@ -76,13 +75,13 @@ public class StateManager : MonoBehaviour {
 		anim.SetFloat ("velocityX", Mathf.Abs (x));
 	}
 		
-	void OnCollisionEnter2D(Collision2D coll){
+	/*void OnCollisionEnter2D(Collision2D coll){
 		checkIfGrounded ();
 	}
 
 	void OnCollisionExit2D(Collision2D coll){
 		checkIfGrounded ();
-	}
+	}*/
 
 	void checkIfGrounded(){
 		botLeftCorner = new Vector2 (boxCollider.bounds.min.x + reduceOverlapX, boxCollider.bounds.min.y);
