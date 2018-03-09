@@ -15,35 +15,49 @@ public class StateManager : MonoBehaviour {
 	public bool kickLight;
 	public bool kickHeavy;
 
-	public string groundName = "Ground";
-
 	public bool canAttack = true;
 	public bool isHit;
 	public bool isAttacking;
+	public float lineLength;
+
+	public float reduceOverlapX = 0.05f;
+	public float increaseOverlapY = 1f;
 
 	private Animator anim;
 	private SpriteRenderer spriteRenderer;
+	private BoxCollider2D boxCollider;
+	private Rigidbody2D rb2D;
+
+	//Box Collider vertices
+	private Vector2 botRightCorner;
+	private Vector2 botLeftCorner; 
+
+	private int layermask;	//Used for ground detection
+
 
 	// Use this for initialization
 	void Start () {
+		boxCollider = GetComponent<BoxCollider2D> ();
 		anim = GetComponent<Animator> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		rb2D = GetComponent<Rigidbody2D> ();
+
+		layermask = ~((1 << gameObject.layer) | (1 << 12));	 //enables all layer except for this fighter's layer, and walls layer
 
 	}
 
 	void Update(){
+		//checkIfGrounded ();
 		handleStates (horizontal, vertical);
 	}
-	
-	// Update is called once per frame
 
 	public void handleStates(float x, float y){
-
 		if (y >= 0) {
 			crouch = false;
 		}
-
+		canAttack = grounded;
 		anim.SetBool ("crouch", crouch);
+		anim.SetBool("grounded", grounded);
 
 		if (x < 0f)
 			spriteRenderer.flipX = true;
@@ -58,35 +72,26 @@ public class StateManager : MonoBehaviour {
 		else if(kickLight){
 			anim.SetTrigger ("kick");
 			kickLight = false;
-
 		}
-
 		anim.SetFloat ("velocityX", Mathf.Abs (x));
-
 	}
-
-
 		
-
-
 	void OnCollisionEnter2D(Collision2D coll){
-		if(coll.gameObject.tag == groundName){
-			anim.SetBool("grounded", true);
-			grounded = true;
-			canAttack = true;
-		}
+		checkIfGrounded ();
 	}
-
 
 	void OnCollisionExit2D(Collision2D coll){
-		if(coll.gameObject.tag == groundName){
-			anim.SetBool("grounded", false);
-			grounded = false;
-			canAttack = false;
-		}
+		checkIfGrounded ();
 	}
 
+	void checkIfGrounded(){
+		botLeftCorner = new Vector2 (boxCollider.bounds.min.x + reduceOverlapX, boxCollider.bounds.min.y);
+		botRightCorner = new Vector2 (boxCollider.bounds.max.x - reduceOverlapX, boxCollider.bounds.min.y +increaseOverlapY);
+		grounded = Physics2D.OverlapArea (botLeftCorner, botRightCorner, layermask);
+		//print (Physics2D.OverlapArea (botLeftCorner, botRightCorner, layermask));
 
+
+	}
 
 	public void ResetStates(){
 		vertical = 0f;

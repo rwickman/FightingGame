@@ -17,9 +17,9 @@ TagManager:
   - 
   - BlockingLayer
   - FighterLayer
-  - 
-  - 
-  - 
+  - Fighter01
+  - Fighter02
+  - Wall
   - 
   - 
   - 

@@ -24,7 +24,9 @@ public class HitController : MonoBehaviour {
 		//This is how you are dealt damage
 		//Need to factor in how someone attacked to decide how much damage is dealt
 		//Also need to perform hit animation
-		if(coll.gameObject.tag == fighterTag){
+
+		//If the collider tag is a fighter and is not on the samae layer as this as fighter (i.e., not the fighter)
+		if(coll.gameObject.tag == fighterTag && coll.gameObject.layer != gameObject.layer){
 			
 			ContactPoint2D[] contacts = new ContactPoint2D[100];
 			int hitPoint = coll.GetContacts (contacts);
@@ -32,6 +34,7 @@ public class HitController : MonoBehaviour {
 			foreach (ContactPoint2D contact in contacts) {
 				Vector2 direction = new Vector2 (transform.position.x, transform.position.y) - contact.point;
 				coll.rigidbody.AddForceAtPosition (-contact.normal * lightKickForce, direction.normalized, ForceMode2D.Impulse);	
+
 			}
 
 			//coll.rigidbody.AddForce(contacts.,ForceMode2D.Impulse);

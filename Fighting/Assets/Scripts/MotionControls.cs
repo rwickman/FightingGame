@@ -6,13 +6,12 @@ public class MotionControls : MonoBehaviour {
 
 	public float moveSpeed = 5f;
 
-	public float jumpSpeed = 10f;
 	public float jumpHeight = 100f;
 
 	private BoxCollider2D boxCollider;      
 	private Rigidbody2D rb2D;
 	private StateManager state;
-
+	public float xJumpPercentage = 0.8f;
 	// Use this for initialization
 	void Start () {
 		boxCollider = GetComponent<BoxCollider2D> ();
@@ -38,11 +37,11 @@ public class MotionControls : MonoBehaviour {
 	private void BasicMove(float x, float y){
 		
 		if (y > 0) {
-			rb2D.AddForce(new Vector2(x,y)  * jumpHeight, ForceMode2D.Impulse);
+			rb2D.AddForce(new Vector2(x* xJumpPercentage,y)  * jumpHeight, ForceMode2D.Impulse) ;
 		} else if (x == 0 && y < 0) {
 			state.crouch = true;
 		} else {
-			rb2D.MovePosition (rb2D.position + new Vector2 (x, 0) * Time.fixedDeltaTime * moveSpeed);
+			rb2D.MovePosition (rb2D.position + new Vector2 (x, 0) * Time.deltaTime * moveSpeed);
 
 		}
 	}
